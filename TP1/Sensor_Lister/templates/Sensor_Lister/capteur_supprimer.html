@@ -1,0 +1,23 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+<header>
+    <div class="supprimer">
+        <h1>Supprimer le capteur</h1>
+    </div>
+</header>
+
+<div class="hero">
+    <div class="hero-text">
+        <p>Etes-vous sûr de vouloir supprimer le capteur: {{ capteur.nom }} ?</p>
+    </div>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Supprimer">
+        <button><a href="{% url 'capteur-detail' capteur.id %}">Annuler</a></button>
+    </form>
+</div>
+
+{% endblock %}

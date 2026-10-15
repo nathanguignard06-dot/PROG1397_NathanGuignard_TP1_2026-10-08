@@ -1,0 +1,32 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+{% if modification %}
+    <header>
+        <nav>
+            <h1>Modifier un capteur</h1>
+        </nav>
+    </header>
+{% else %}
+    <header>
+        <nav>
+            <h1>Creer un nouveau capteur</h1>
+        </nav>
+    </header>
+{% endif %}
+
+<div class="hero">
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+        {% if modification %}
+            <button><a href="{% url 'capteur-detail' capteur.id %}">Annuler</a></button>
+        {% else %}
+            <button><a href="{% url 'capteur-liste' %}">Annuler</a></button>
+        {% endif %}
+    </form>
+</div>
+
+{% endblock %}

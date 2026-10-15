@@ -1,0 +1,41 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+    <header>
+        <nav>
+            <h1>Capteur Lister</h1>
+
+            <ul class="menu">
+                <li><a href="{% url 'capteur-liste' %}">Liste de Capteur</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Bienvenue sur Capteur Lister</h1>
+
+            <p>Application pour manipuler, stocker, et visioner plusieur capteur</p>
+            <button><a href="#getStarted">Sign In</a></button>
+
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>Stocker</h3>
+            <p>Permet de stocker plusieur capteur tout dans un systeme</p>
+        </div>
+        <div class="feature">
+            <h3>Manipuler</h3>
+            <p>Permet de controler, ajouter et modifier des capteurs</p>
+        </div>
+        <div class="feature">
+            <h3>Visualiser</h3>
+            <p>Permet de rechercher et afficher les details concernant les capteurs</p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <h1>Detail des Capteurs</h1>
+
+        <ul class="menu">
+            <li><a href="{% url 'capteur-liste' %}">Liste des Capteurs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-text">
+        <h2>Capteur {{ capteurs.nom }}</h2>
+        
+        <ul class="detail-affichage">
+            <li>Type de capteur : {{ capteurs.get_type_capteur_display }}</li>
+            <li>Actif : {{ capteurs.actif }}</li>
+            <li>Emplacement : {{ capteurs.emplacement }}</li>
+            <li>Information : {{ capteurs.detail }}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="features">
+    <button><a href="{% url 'capteur-modifier' capteurs.id %}">Modifier ce capteur</a></button>
+    <button><a href="{% url 'capteur-supprimer' capteurs.id %}">Supprimer ce capteur</a></button>
+</div>
+
+{% endblock %}

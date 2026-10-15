@@ -1,0 +1,40 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <h1>Rechercher un capteur</h1>
+
+        <ul class="menu">
+            <li><a href="{% url 'capteur-liste' %}">Liste des Capteurs</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="hero">
+    <form action="" method="get" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Envoyer">
+        <button><a href="{% url 'recherche' %}">Reinitialiser</a></button>
+    </form>
+    
+    <div class="hero-text">
+        <h2>Resultats</h2>
+        
+        {% if not form.errors %}
+        
+        <ul>
+            {% for capteur in capteurs %}
+            <li>{{ capteur.nom }}</li>
+            {% empty %}
+            <p>Aucun capteur trouver</p>
+            {% endfor %}
+        </ul>
+        
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

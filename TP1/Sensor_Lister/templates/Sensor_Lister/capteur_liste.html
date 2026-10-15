@@ -1,0 +1,33 @@
+{% extends 'Sensor_Lister/base.html' %}
+
+{% block content %}
+
+<header>
+    <nav>
+        <h1>Liste de Capteur</h1>
+
+        <ul class="menu">
+            <li><a href="{% url 'page-principale' %}">Menu Principale</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-text">
+        <h2>Tout les capteurs present: </h2>
+        
+        <ul class="list-affichage">
+            {% for capteur in capteurs %}
+                <li><a href="{% url 'capteur-detail' capteur.id %}">{{ capteur.nom }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="features">
+    <button><a href="{% url 'recherche' %}">Rechercher un capteur</a></button>
+    <button><a href="{% url 'capteur-ajouter' %}">Ajouter un capteur</a></button>
+</div>
+
+{% endblock %}
