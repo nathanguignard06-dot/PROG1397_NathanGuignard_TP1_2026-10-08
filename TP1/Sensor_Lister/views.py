@@ -1,6 +1,12 @@
+from rest_framework.views import APIView
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.response import Response
+
 from django.shortcuts import render, get_object_or_404, redirect
+
 from Sensor_Lister.models import Capteur
 from Sensor_Lister.forms import RechercheCapteurForm, CapteurForm
+from Sensor_Lister.serializers import CapteurSerializer, CapteurDetailSerializer
 
 def capteur_liste(request):
     capteurs = Capteur.objects.all()
@@ -68,3 +74,15 @@ def capteur_supprimer(request, id):
 
 def page_principale(request):
     return render(request, 'Sensor_Lister/page_principale.html')
+
+class CapteurViewset(ReadOnlyModelViewSet):
+
+    serializer_class = CapteurSerializer
+    def get_queryset(self):
+        return Capteur.objects.all()
+
+class CapteurDetailViewset(ReadOnlyModelViewSet):
+
+    serializer_class = CapteurDetailSerializer
+    def get_queryset(self):
+        return Capteur.objects.all()
