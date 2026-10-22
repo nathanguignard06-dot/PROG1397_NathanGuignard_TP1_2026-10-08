@@ -79,10 +79,14 @@ class CapteurViewset(ReadOnlyModelViewSet):
 
     serializer_class = CapteurSerializer
     def get_queryset(self):
-        return Capteur.objects.all()
+        return Capteur.objects.filter(actif=True)
 
 class CapteurDetailViewset(ReadOnlyModelViewSet):
 
     serializer_class = CapteurDetailSerializer
     def get_queryset(self):
-        return Capteur.objects.all()
+        queryset = Capteur.objects.filter(actif=True)
+        emplacement_id = self.request.GET.get('emplacement_id')
+        if emplacement_id is not None:
+            queryset = queryset.filter(emplacement_id=emplacement_id)
+        return queryset
